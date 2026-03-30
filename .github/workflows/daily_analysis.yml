@@ -292,6 +292,18 @@ jobs:
           fi
           echo ""
           if [ -f "logs/stock_analysis_$(date +%Y%m%d).log" ]; then
+
+
+
+      - name: 提交报告到仓库
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        mkdir -p reports  # 如果没有 reports 文件夹则创建
+        cp report_*.md reports/  # 将生成的报告复制到文件夹
+        git add reports/
+        git commit -m "自动更新股票分析报告: $(date +'%Y-%m-%d')" || exit 0
+        git push
             echo "📜 最近日志（最后 30 行）:"
             tail -30 logs/stock_analysis_*.log 2>/dev/null || echo "无日志"
           fi
