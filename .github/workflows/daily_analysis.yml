@@ -107,7 +107,9 @@ jobs:
           # ==========================================
           # 通知渠道（可同时配置多个，全部推送）
           # ==========================================
-          
+          #方式零：server酱
+          SERVERCHAN_SCKEY: ${{ secrets.SERVERCHAN_SCKEY }}
+
           # 方式一：企业微信 Webhook
           WECHAT_WEBHOOK_URL: ${{ secrets.WECHAT_WEBHOOK_URL }}
           WECHAT_MSG_TYPE: ${{ vars.WECHAT_MSG_TYPE || secrets.WECHAT_MSG_TYPE || 'markdown' }}
