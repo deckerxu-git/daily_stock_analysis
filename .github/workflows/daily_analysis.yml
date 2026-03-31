@@ -74,7 +74,7 @@ jobs:
           # 如果根目录有生成的 .md 文件，统统移动到 reports 文件夹
           find . -maxdepth 1 -name "*.md" -not -name "README.md" -exec mv {} reports/ \;
           
-          git add reports/
+          git add -f reports/
           # 只有当 reports 文件夹有变化时才提交
           if ! git diff --cached --quiet; then
             git commit -m "自动更新分析报告: $(date +'%Y-%m-%d')"
