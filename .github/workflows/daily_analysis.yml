@@ -303,7 +303,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           mkdir -p reports  # 如果没有 reports 文件夹则创建
           cp *.md reports/ 2>/dev/null || true  # 将生成的报告复制到文件夹
-          git add reports/
+          git add -f reports/
           git commit -m "自动更新股票分析报告: $(date +'%Y-%m-%d')" || exit 0
           git push
 
